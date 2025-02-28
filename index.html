@@ -198,40 +198,25 @@
             <div class="col" id="pip-container" class="code-col" style="flex-direction: column;display:flex;" >
             <p>Installation:</p>
             <code>
-                pip install dreamsim
-            </code>
-			<br>
-			<div style="flex-grow: 1;"></div>
-			<p>Preliminaries:</p>
-            <code>
-            from dreamsim import dreamsim
-			<br>
-			from PIL import Image
-			<br>
-			<br>
-			model, preprocess = dreamsim(pretrained=True, cache_dir="~/.cache")
-            </code>
-            </div>
-            <div class="col" id="example-container" class="code-col" style="flex-direction: column;display:flex;">
-                <p>Usage:</p>
-                <code>
-				# Feature extraction
-				<br>
-                img1 = preprocess(Image.open("img1_path"))
+                git clone https://github.com/ChrisDud0257/AFINE
+                <br>
+                cd QuickInference
+                <br>
+                conda create --name afine python=3.10
                 <br><br>
-                embedding = model.embed(img1)
+                pip install torch==2.0.1 torchvision==0.15.2 torchaudio==2.0.2 --index-url https://download.pytorch.org/whl/cu118
                 <br>
-                <br>
-				# Perceptual similarity metric
-				<br>
-                img1 = preprocess(Image.open("img1_path"))
-                <br>
-                img2 = preprocess(Image.open("img2_path"))
-                <br>
-				<br>
-                distance = model(img1, img2)
+                pip install -r requirements.txt
             </code>
-            </div>
+			<br>
+            <p>Usage:</p>
+            <code>
+                cd QuickInference
+                <br><br>
+                python afine.py --pretrain_CLIP_path [path to the pretrained CLIP ViT-B-32.pt] --afine_path [path to our afine.pth] \
+                --dis_img_path [path to the distortion image] --ref_img_path [path to the reference image]
+            </code>
+			<br>
         </div>
     </div>
     <br>
@@ -259,200 +244,53 @@
     <br>
     <hr>
     <center>
-        <h1>Nearest Neighbors Experiment</h1>
+        <h1>DiffIQA</h1>
     </center>
-    <br>
-    <table width="900px" border="0" align="center">
-        <tbody>
-            <tr>
-                <div id="nnCarousel" class="carousel slide teaser-carousel" data-ride="carousel" data-interval="7000">
-				    <ol class="carousel-indicators">
-                        <li data-target="#nnCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#nnCarousel" data-slide-to="1"></li>
-                        <li data-target="#nnCarousel" data-slide-to="2"></li>
-                        <li data-target="#nnCarousel" data-slide-to="3"></li>
-                        <li data-target="#nnCarousel" data-slide-to="4"></li>
-                        <li data-target="#nnCarousel" data-slide-to="5"></li>
-                        <li data-target="#nnCarousel" data-slide-to="6"></li>
-                        <li data-target="#nnCarousel" data-slide-to="7"></li>
-                        <li data-target="#nnCarousel" data-slide-to="8"></li>
-                        <li data-target="#nnCarousel" data-slide-to="9"></li>
-                    </ol>
 
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_1.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_7.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_3.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_10.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_8.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_5.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_6.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_2.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_9.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="teaser-img" src="./webpage_assets/nn_4.jpg">
-                            </div>
-                        </div>
-                    </div>
+    <style>
+        .flex-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 5px;
+            max-width: 100%; /* 限制总宽度 */
+            margin: auto;
+        }
+        .flex-gallery img {
+            width: calc((100% - 10px * 5) / 6); /* 计算适合 6 张图片的宽度 */
+            height: auto; /* 保持原始比例 */
+            object-fit: cover;
+        }
+    </style>
 
-                    <a class="carousel-control-prev" href="#nnCarousel" role="button" data-slide="prev"
-                        style="height: 500px;">
-                        <div class="slider-navigation-previous">
-                            <svg viewBox="0 0 50 80" xml:space="preserve" style="margin-right: 4px;">
-                                <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
-                                    stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
-                                </polyline>
-                            </svg>
-                        </div>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#nnCarousel" role="button" data-slide="next"
-                        style="height: 500px;">
-                        <div class="slider-navigation-next">
-                            <svg viewBox="0 0 50 80" xml:space="preserve" style="margin-left: 4px;">
-                                <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
-                                    stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
-                                </polyline>
-                            </svg>
-                        </div>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
+    <div class="flex-gallery">
+        <img src="./assests/worse/0009x784y4401.png" alt="Image">
+        <img src="./assests/worse/0009x784y44Original.png" alt="Image">
+        <img src="./assests/worse/000011x398y81203.png" alt="Image">
+        <img src="./assests/worse/000011x398y812Original.png" alt="Image">
+        <img src="./assests/worse/000042x403y42301.png" alt="Image">
+        <img src="./assests/worse/000042x403y423Original.png" alt="Image">
+    
+        <img src="./assests/similar/0030x393y77301.png" alt="Image">
+        <img src="./assests/similar/0030x393y773Original.png" alt="Image">
+        <img src="./assests/similar/0043x22y1901.png" alt="Image">
+        <img src="./assests/similar/0043x22y19Original.png" alt="Image">
+        <img src="./assests/similar/000310x788y001.png" alt="Image">
+        <img src="./assests/similar/000310x788y0Original.png" alt="Image">
+    
+        <img src="./assests/better/0016x0y117301.png" alt="Image">
+        <img src="./assests/better/0016x0y1173Original.png" alt="Image">
+        <img src="./assests/better/0024x32y77401.png" alt="Image">
+        <img src="./assests/better/0024x32y774Original.png" alt="Image">
+        <img src="./assests/better/0024x785y116901.png" alt="Image">
+        <img src="./assests/better/0024x785y1169Original.png" alt="Image">
+    </div>
 
-            </tr>
-        </tbody>
-    </table>
-    <br>
-    <br>
-    <br>
-    <br>
     <br>
 	<p id="nn-description">
-        <span id="bold">Nearest-neighbor retrieval.</span>
-        We perform a nearest neighbor search on the ImageNet-R and COCO datasets using different metrics.
-		Although the datasets include images outside of our training domain, our model consistently retrieves neighbors with similar appearance and class to that of the query image.
+        Instances of images that are worse, similar, and better to their reference counterparts in our DiffIQA dataset 
+        (images on the right are references).
     </p>
-    <hr>
-    <center>
-        <h1>Inversion Experiment</h1>
-    </center>
-    <br>
-    <table width="900px" border="0" align="center">
-        <tbody>
-            <tr>
-                <div id="inversionCarousel" class="carousel slide inversion-carousel" data-ride="carousel"
-                    data-interval="7000">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div>
-                                <img class="inversion-img" src="./webpage_assets/inversion_1.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="inversion-img" src="./webpage_assets/inversion_2.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="inversion-img" src="./webpage_assets/inversion_3.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="inversion-img" src="./webpage_assets/inversion_4.jpg">
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div>
-                                <img class="inversion-img" src="./webpage_assets/inversion_5.jpg">
-                            </div>
-                        </div>
-                    </div>
-
-                    <ol class="carousel-indicators" style="bottom: -35px;">
-                        <li data-target="#inversionCarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#inversionCarousel" data-slide-to="1"></li>
-                        <li data-target="#inversionCarousel" data-slide-to="2"></li>
-                        <li data-target="#inversionCarousel" data-slide-to="3"></li>
-                        <li data-target="#inversionCarousel" data-slide-to="4"></li>
-                    </ol>
-
-                    <a class="carousel-control-prev" href="#inversionCarousel" role="button" data-slide="prev"
-                        style="height: 500px;">
-                        <div class="slider-navigation-previous">
-                            <svg viewBox="0 0 50 80" xml:space="preserve" style="margin-right: 4px;">
-                                <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
-                                    stroke-linejoin="round" points="45.63,75.8 0.375,38.087 45.63,0.375 ">
-                                </polyline>
-                            </svg>
-                        </div>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#inversionCarousel" role="button" data-slide="next"
-                        style="height: 500px;">
-                        <div class="slider-navigation-next">
-                            <svg viewBox="0 0 50 80" xml:space="preserve" style="margin-left: 4px;">
-                                <polyline fill="white" stroke-width=".5em" stroke-linecap="round"
-                                    stroke-linejoin="round" points="0.375,0.375 45.63,38.087 0.375,75.8 ">
-                                </polyline>
-                            </svg>
-                        </div>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-
-            </tr>
-        </tbody>
-    </table>
-    <br>
-    <p id="inversion-description">
-        <span id="bold">Feature inversion across different metrics and image priors.</span>
-        Given a target image, we optimize for an image, where the objective is to match the target image
-        embedding of a given backbone.
-        Without any image prior (Optimization), our metric recovers better the color, shape and semantics
-        of the target image. With a weak image prior (DIP Inversion), our metric is better able to reproduce scene
-        structure and semantics. Using a diffusion model as a strong prior, our metric better captures overall semantics
-        and scene appearance.
-    </p>
-    <br>
     <hr>
     <center>
         <h1>Acknowledgements</h1>
@@ -460,10 +298,7 @@
             <tbody>
                 <tr>
                     <td>
-                        We thank Jim DiCarlo, Liad Mudrik, Nitzan Censor for fruitful discussions throughout the project. Additionally, we thank Narek Tumanyan for his insightful comments over the course of the project. Finally, we thank Michelle Li for proofreading sections of this paper and offering helpful comments.
-						<br>
-						<br>
-						This work was supported by the NSF GRFP Fellowship to Shobhita Sundaram, the Meta PhD Fellowship to Lucy Chai, the Israeli Science Foundation (grant 2303/20) to Tali Dekel, and the Packard Fellowship to Phillip Isola. 
+                        
 					</td>
                 </tr>
             </tbody>
@@ -476,14 +311,14 @@
     </center>
     <div class="col" class="code-col">
         <code style="font-size: 14px;">
-            @inproceedings{fu2023dreamsim,<br>
+            <!-- @inproceedings{fu2023dreamsim,<br>
                 &ensp;title={DreamSim: Learning New Dimensions of Human Visual Similarity using Synthetic Data},<br>
                 &ensp;author= {Fu, Stephanie and Tamir, Netanel and Sundaram, Shobhita and Chai, Lucy and Zhang, Richard and Dekel, Tali and Isola, Phillip},<br>
 		&ensp;booktitle={Advances in Neural Information Processing Systems},<br>
                 &ensp;pages={50742--50768},<br>
 		&ensp;volume={36}<br>
 		&ensp;year={2023}<br>
-              }
+              } -->
         </code>
     </div>
     <br>
