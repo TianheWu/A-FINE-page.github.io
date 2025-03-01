@@ -26,7 +26,7 @@
 
     <script src="script.js"></script>
 
-    <link rel="icon" type="image/png" href="webpage_assets/dreamsim_icon.png" />
+    <link rel="icon" type="image/png" href="./assests/afine_logo.png" />
 
     <title>Toward Generalized Image Quality Assessment: Relaxing the Perfect Reference Quality Assumption</title>
     <meta property="og:image" content="./webpage_assets/teaser.jpg">
@@ -222,7 +222,6 @@
     <br>
     <hr>
 
-
     <center>
         <h1>Method</h1>
     </center>
@@ -247,50 +246,218 @@
         <h1>DiffIQA</h1>
     </center>
 
+    <p id="diffiqa-description">
+        We gather original input images from three sources: 1) 1,200 images from the DF2K dataset;
+        2) 1,000 images from the Internet under the license of Creative Commons; and 3) 
+        640 images captured using mobile phones or digital cameras. 
+        The input images are cropped to 512&times;512 with an overlap of less than 128 pixels, 
+        leading to a total of 29,868 images as inputs to our trained enhancer. 
+        During inference, we randomly 1) apply the same degradations as used during training, 2) 
+        augment the initial image latent with additive Gaussian noise of varying intensities, and 3) 
+        adjust the sampling steps within range [20, 1000] to generate images with diverse quality levels. 
+        By combining these operations, we generate six test images for each input image, yielding a total of 179,208 test images.
+    </p>
+
     <style>
         .flex-gallery {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 5px;
-            max-width: 100%; /* 限制总宽度 */
+            max-width: 100%;
             margin: auto;
         }
-        .flex-gallery img {
+        .flex-gallery figure {
             width: calc((100% - 10px * 5) / 6); /* 计算适合 6 张图片的宽度 */
-            height: auto; /* 保持原始比例 */
+            text-align: center; /* 让 caption 文字居中 */
+            margin: 0;
+        }
+        .flex-gallery img {
+            width: 100%; /* 让图片填充 figure */
+            height: auto;
             object-fit: cover;
         }
+        .flex-gallery figcaption {
+            font-size: 14px; /* 调整文字大小 */
+            color: #555; /* 使文字颜色柔和 */
+            margin-top: 3px; /* 图片和文字之间的间距 */
+        }
     </style>
-
+    
     <div class="flex-gallery">
-        <img src="./assests/worse/0009x784y4401.png" alt="Image">
-        <img src="./assests/worse/0009x784y44Original.png" alt="Image">
-        <img src="./assests/worse/000011x398y81203.png" alt="Image">
-        <img src="./assests/worse/000011x398y812Original.png" alt="Image">
-        <img src="./assests/worse/000042x403y42301.png" alt="Image">
-        <img src="./assests/worse/000042x403y423Original.png" alt="Image">
+        <figure>
+            <img src="./assests/worse/0009x784y4401.png" alt="Image">
+            <figcaption>Worse</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/worse/0009x784y44Original.png" alt="Image">
+            <figcaption>Reference</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/worse/000011x398y81203.png" alt="Image">
+            <figcaption>Worse</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/worse/000011x398y812Original.png" alt="Image">
+            <figcaption>Reference</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/worse/000042x403y42301.png" alt="Image">
+            <figcaption>Worse</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/worse/000042x403y423Original.png" alt="Image">
+            <figcaption>Reference</figcaption>
+        </figure>
     
-        <img src="./assests/similar/0030x393y77301.png" alt="Image">
-        <img src="./assests/similar/0030x393y773Original.png" alt="Image">
-        <img src="./assests/similar/0043x22y1901.png" alt="Image">
-        <img src="./assests/similar/0043x22y19Original.png" alt="Image">
-        <img src="./assests/similar/000310x788y001.png" alt="Image">
-        <img src="./assests/similar/000310x788y0Original.png" alt="Image">
+        <figure>
+            <img src="./assests/similar/0030x393y77301.png" alt="Image">
+            <figcaption>Similar</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/similar/0030x393y773Original.png" alt="Image">
+            <figcaption>Reference</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/similar/0043x22y1901.png" alt="Image">
+            <figcaption>Similar</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/similar/0043x22y19Original.png" alt="Image">
+            <figcaption>Reference</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/similar/000310x788y001.png" alt="Image">
+            <figcaption>Similar</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/similar/000310x788y0Original.png" alt="Image">
+            <figcaption>Reference</figcaption>
+        </figure>
     
-        <img src="./assests/better/0016x0y117301.png" alt="Image">
-        <img src="./assests/better/0016x0y1173Original.png" alt="Image">
-        <img src="./assests/better/0024x32y77401.png" alt="Image">
-        <img src="./assests/better/0024x32y774Original.png" alt="Image">
-        <img src="./assests/better/0024x785y116901.png" alt="Image">
-        <img src="./assests/better/0024x785y1169Original.png" alt="Image">
+        <figure>
+            <img src="./assests/better/0016x0y117301.png" alt="Image">
+            <figcaption>Better</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/better/0016x0y1173Original.png" alt="Image">
+            <figcaption>Reference</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/better/0024x32y77401.png" alt="Image">
+            <figcaption>Better</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/better/0024x32y774Original.png" alt="Image">
+            <figcaption>Reference</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/better/0024x785y116901.png" alt="Image">
+            <figcaption>Better</figcaption>
+        </figure>
+        <figure>
+            <img src="./assests/better/0024x785y1169Original.png" alt="Image">
+            <figcaption>Reference</figcaption>
+        </figure>
     </div>
+    
 
     <br>
-	<p id="nn-description">
-        Instances of images that are worse, similar, and better to their reference counterparts in our DiffIQA dataset 
-        (images on the right are references).
+	<p id="diffiqa-description">
+        Instances of images that are worse, similar, and better to their reference counterparts in our DiffIQA dataset.
     </p>
+
+    <hr>
+    <center>
+        <h1>SRIQA-Bench</h1>
+    </center>
+
+    <p id="sriqa-bench-description">
+        We first compile 100 original images covering a wide range of natural scenes and subject
+        them to common degradations to generate input low-resolution images. 
+        We then adopt two regressive SR methods: 1) SwinIR  and 2) RRDB, and eight generative SR methods: 3) Real-ESRGAN, 
+        4) BSRGAN, 5) HGGT, 6) SUPIR, 7) SeeSR, 8) StableSR, 9) SinSR and 10) OSEDiff to produce ten SR images. 
+        Generally speaking, diffusion-based SR methods outperform GAN-based methods with more plausible textures, 
+        while generative SR methods are more effective than regressive SR methods with more realistic structures.
+    </p>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>图片排列示例</title>
+        <style>
+            .gallery {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 5px;
+                text-align: center;
+            }
+            .gallery img {
+                width: 100%;
+                height: auto;
+            }
+            .caption {
+                font-size: 14px;
+                margin-top: 5px;
+            }
+        </style>
+    </head>
+    <body>
+    
+    <div class="gallery">
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_Original.png" alt="Reference">
+            <div class="caption">Reference</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_LR.png" alt="LR">
+            <div class="caption">LR</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_SwinIRx4.png" alt="SwinIR">
+            <div class="caption">SwinIR</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_RRDBx4.png" alt="RRDB">
+            <div class="caption">RRDB</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_RealESRGANx4.png" alt="RealESRGAN">
+            <div class="caption">RealESRGAN</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_BSRGANx4.png" alt="BSRGAN">
+            <div class="caption">BSRGAN</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_HGGTx4.png" alt="HGGT">
+            <div class="caption">HGGT</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_SUPIRx4.png" alt="SUPIR">
+            <div class="caption">SUPIR</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_SeeSRx4.png" alt="SeeSR">
+            <div class="caption">SeeSR</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_StableSRx4.png" alt="StableSR">
+            <div class="caption">StableSR</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_SinSRx4.png" alt="SinSR">
+            <div class="caption">SinSR</div>
+        </div>
+        <div>
+            <img src="./assests/sriqa_bench/realworld24_OSEDiffx4.png" alt="OSEDiff">
+            <div class="caption">OSEDiff</div>
+        </div>
+    </div>
+    
+    </body>
+
+
     <hr>
     <center>
         <h1>Acknowledgements</h1>
